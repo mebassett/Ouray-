@@ -1,0 +1,28 @@
+
+<form action="/login" method="post">
+	<fieldset id="loginBox">
+		<div class="left">
+			<h3>Login:</h3>
+		</div>
+			<div class="left">
+				<label for="email">email</label>
+				<input id="email" class="text" name="email" />
+			</div>
+		
+			<div class="left">
+				<label for="password">password</label>
+				<input id="password" class="text" name="password" type="password" />
+			</div>
+			
+			<div class="left">			
+				<label for="login"><a href="/signup">Signup</a></label>
+				<input type="submit" name="login" value="Login" class="button"/>	
+			</div>	
+			<div class="fb">
+				<fb:login-button perms="email" v="2" size="medium" >Connect</fb:login-button>
+			</div>
+
+
+	</fieldset>
+</form>
+

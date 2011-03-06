@@ -1,0 +1,9 @@
+.ajaxHelper
+{
+   display     : none;
+   visibility  : hidden;
+   height      : 1px;
+	left:-2000px;
+	position:absolute;
+	bottom:0px;	
+}

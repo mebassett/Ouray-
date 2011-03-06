@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>New Course - Ouray</title>
+		<link rel="stylesheet" href="/resources/style.css" type="text/css" media="all" />
+
+		
+	</head>
+	<body>
+
+	<div id="headerColor">
+			<div id="headerLogin">
+				<?php include("nav.inc.phtml"); ?>		
+			</div>
+		</div>
+		<div id="footerColor">
+		<div id="mainContent">
+			<h1>New Course</h1>
+			
+			<p><?=$errStr?></p>
+			
+			<form action="newSubjectFeed" method="post">
+		    	<fieldset id="newCourseBox" >
+		    	<label for="title">What's the title of your course? </label>
+				<input id="title"  name="title" value="<?=$defaultTitle?>" />
+				
+				<label for="description">And whats it all about? </label>
+				<textarea id="description" name="description" rows="4" cols="60"><?= $defaultDescription ?></textarea>
+				
+		    	
+		    	
+		    	<p><input type="submit" name="submit" value="All done? Click here!" /></p>
+		    	</fieldset>
+		  	</form> 
+			
+			
+	</div>
+<?php include "copyright.inc.phtml" ?>		
+		</div>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US" xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>
+		<title>Ouray</title>
+		<link rel="stylesheet" href="/resources/style.css" type="text/css" media="all" />		
+		<link rel="stylesheet" href="/resources/viewCourse.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/resources/jquery.autocomplete.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/resources/ajax.css" type="text/css" media="all" />	
+
+	</head>
+	<body>
+		<div id="headerColor">
+			<div id="headerLogin">
+				<?php include("includes/loginBox.phtml"); ?>
+			</div>		
+		</div>
+		
+		<div id="footerColor">
+		
+			<div id="mainContent">
+			
+				<h1>Ouray.Sneffel</h1>
+				<p class="header">Ouray is the easiest way to share files and information in university courses.</p>
+				<p><strong>Ouray now supports LaTeX - simply wrap your maths equations in $ $, like this "my math equation $ \int^{\infty}_{2} e^{-t} sin(t) dt $"</strong></p>
+				
+				
+				<h3>Some Courses:</h3>
+				<ul class="frontList">
+					<?php foreach($otherCourses as $course) {?>
+						<li><a href="/<?=$course->urlTitle?>"><?=$course->title?></a>
+						<p>
+							<?=$course->description ?>
+						</p>
+						</li>
+					<?php }?>
+				</ul>
+			</div>
+<?php include "copyright.inc.phtml" ?>	
+		</div>
+		
+
+
+		
+	</body>
+</html>

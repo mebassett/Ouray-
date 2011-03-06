@@ -1,0 +1,31 @@
+<div id="courseItems">
+
+<?php if(count($items) > 0 ) { ?>
+	
+	<?php foreach($items as $item) { ?>
+		<div class="courseItem">
+			<span>
+				<?php if((array_key_exists(1,$uri) && $uri[1] == "all") || (array_key_exists(4,$uri) && $uri[4] == "all") ||array_key_exists(5,$uri)) {?>
+					<a href="/<?=$item->courseUrl?>"><?=$item->courseTitle?></a> -  
+				<?php } ?>
+		
+					<?=($item->userName == $user->name) ? "You" : $item->userName?> said:</span>
+				
+			<p><?=$item->renderText?></p>
+			
+			<?php if($item->originalName != "") { ?>
+				
+				<p><a href="<?=uploadUrlPrefix . $item->serverName?>"><?=$item->originalName?></a></p><span><?=$item->downloads?> downloads
+			
+			<?php } else {?>
+				 <span><?=$item->likes?> people like this <?php if($user->id > 0) { ?> - <a onclick="onLike(<?=$item->courseId?>,<?=$item->id?>)">Like</a> <?php  } ?>
+			<?php } ?>
+			- <?=date('d M Y H:i',$item->uploadDate) ?> </span>
+		</div>	
+	<?php } ?>
+	
+	
+<?php } else {?>
+	This course is empty; nothing to see here, folks.	
+<?php } ?>
+</div>

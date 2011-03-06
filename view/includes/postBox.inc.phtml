@@ -1,0 +1,46 @@
+				<div id="addItemBox">
+					<form enctype="multipart/form-data" target="uploadItem" action="/operationUploadItem" method="post">
+					<input id="textField" type="hidden" name="text"/>
+					<div id="textBox" class="textBoxInactive" contenteditable="true">What would you like to share with the course?</div>
+					<div class="otherOptions">
+						<label for="uploadedFile">Upload file? </label>
+							<input id="uploadedFile" name="uploadedFile" type="file" />
+						<label for="course">to which course?</label>
+							<input id="course" name="course" <?php if(isset($course)) { echo 'value="'.$course->title.'"'; } ?> />
+				    		
+					</div>
+					<div class="postButton">
+				    		<input type="submit" name="upload" value="Post" onclick="onUploadItem()" />
+				    	</div>
+					<small>Ouray supports LaTeX - simply wrap your maths equations in $ $, like this "my math equation $ \int^{\infty}_{2} e^{-t} sin(t) dt $"</small>
+				    </form> 	
+				</div>
+				<script type="text/javascript" language="javascript">
+   					$(document).ready(function() {
+   						$(".otherOptions").hide();
+   						$("#addItemBox").click(function(event) {
+   							event.stopPropagation();
+   							
+   						})
+   						$("#textBox").keydown(function (){
+   							$("#textField").val($("#textBox").text());
+   							
+   						})
+   						$("#textBox").click(function () {
+   							$(this).removeClass('textBoxInactive')
+   							$(this).addClass('textBoxActive');
+   							var text = jQuery.trim($(this).text());
+   							if(text == "What would you like to share with the course?")
+   								$(this).html("<br/><br/><br/>");
+   							$(".otherOptions").show('slow');
+   						});
+   						$("body").click(function (){
+   							$("#textBox").removeClass('textBoxActive')
+   							$("#textBox").addClass('textBoxInactive');
+   							var text = jQuery.trim($("#textBox").text());
+   							if( text == "")
+   								$("#textBox").html("What would you like to share with the course?");
+   							$(".otherOptions").hide('slow');
+   						});
+   					});
+				</script>

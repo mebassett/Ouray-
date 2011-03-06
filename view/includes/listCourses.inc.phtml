@@ -1,0 +1,21 @@
+			<div id="courses"><?php if(count($userCourses) > 0 ) {?>
+					<h3>Your courses</h3>
+					<ul>
+						<?php foreach($userCourses as $course) {?>
+							<li><a href="/<?=$course->urlTitle?>"><?=$course->title?></a></li>
+						<?php }?>
+					</ul>
+				<?php } ?>
+				
+				<?php if(count($otherCourses) > 0 ) {?>
+					<h3><?=(count($userCourses) == 0) ? 'Courses' : 'Other courses'?></h3>
+					<ul>
+						<?php foreach($otherCourses as $course) {?>
+							<li><a href="/<?=$course->urlTitle?>"><?=$course->title?></a> - <a href="#" onclick="onJoinClick(<?=$course->id?>)">enroll</a>
+							<p>
+								<?=$course->description ?>
+							</p>
+							</li>
+						<?php }?>
+					</ul>
+				<?php } $course=null;?></div>

@@ -1,0 +1,14 @@
+<html>
+<body>
+	<span id="error"><?=$errStr?></span>
+	<span id="status">
+		You've joined the course! <a href="#" onclick="undoCourseJoin(<?=$uri[2]?>)">undo</a>
+	</span>
+	<span id="content">
+		<?php include("includes/listCourses.inc.phtml"); ?>	
+				
+	</span>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Ouray</title>
+		<link rel="stylesheet" href="/resources/style.css" type="text/css" media="all" />		
+		<link rel="stylesheet" href="/resources/viewCourse.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/resources/jquery.autocomplete.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/resources/ajax.css" type="text/css" media="all" />
+
+		<script type="text/javascript" src="/resources/jquery.js" ></script>
+		<script type="text/javascript" src="/resources/jquery.autocomplete.js" ></script>
+	
+	</head>
+	<body>
+
+
+		<div id="headerColor">
+			<div id="headerLogin">
+				<?php include("nav.inc.phtml"); ?>		
+			</div>
+		</div>
+		
+		<div id="footerColor">
+			<div id="mainContent">
+			
+			
+			<?php if(count($userCourses) > 0 ) { ?>
+				
+				<h3>Welcome Back, <?=$user->name?>!</h3>
+				
+				<p id="errorBox"><?=$errStr?></p>
+				<p id="errorBox2"><?=$errStr?></p>
+				
+				<p>Here's an update on what's happened since you were last here:</p>
+		<script type="text/javascript" src="/resources/viewCourse.js" ></script>
+		<script type="text/javascript" src="/resources/listItems.js" ></script>
+		<script type="text/javascript">
+			var courseId='all';
+			var dashboard='yes';
+			var itemCount = <?=$itemCount?>;
+		</script>		
+					
+				<p> <a href="#" onclick="reOrder('recent')">Most Recent</a> - 
+					<a href="#" onclick="reOrder('popular')">Most Popular</a> -
+					<select id="courseChooser" onchange="onCourseChange()">
+						
+						<?php foreach($userCourses as $course) { ?> 
+							<option value="<?=$course->id?>"><?=$course->title?></option>
+						<?php } unset($course);?>
+						<option value="all" selected="selected">All Courses</option>
+					</select>
+				</p>
+				
+				<?php include("includes/postBox.inc.phtml"); ?>
+				
+				<?php include("includes/listItems.inc.phtml"); ?>	
+				
+				<span id="moreLess">
+				<?php if($itemCount > 10) { ?>
+					<a onclick="showMore()">Show more</a>
+				<?php }?>
+				</span>		
+			<?php } else { ?>	
+				<script type="text/javascript" src="/resources/dashboard.js" ></script>
+				<h3>Welcome to Ouray!</h3>
+				<p id="errorBox"><?=$errStr?></p>
+				<p>Ouray is an easy way to share files and information in university courses.  Here you will see a list of updates from all your courses.  But you've not enrolled in any courses yet; why not do so now?</p>
+				
+				<?php  include("includes/listCourses.inc.phtml"); ?>
+				
+			<?php } ?>
+			
+			
+		</div>
+			<div id="copyright">
+			&copy; 2010 <a href="http://www.sneffel.com">Sneffel</a>
+			</div>		
+		</div>
+		
+		<iframe id="formHelper" class="ajaxHelper" name="uploadItem" onload="onUploadItemLoad();">
+		</iframe>			
+		<iframe id="helper" class="ajaxHelper" onload="onHelperLoad();" src="/newSubjectFeed">
+		</iframe>
+	
+	</body>
+</html>

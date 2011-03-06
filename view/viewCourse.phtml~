@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title><?=$course->title?> - Ouray</title>
+		<link rel="stylesheet" href="/resources/style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/resources/viewCourse.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/resources/jquery.autocomplete.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/resources/ajax.css" type="text/css" media="all" />
+
+		<script type="text/javascript" src="/resources/jquery.js" ></script>
+		<script type="text/javascript" src="/resources/jquery.autocomplete.js" ></script>
+		<script type="text/javascript" src="/resources/viewCourse.js" ></script>
+		<script type="text/javascript" src="/resources/listItems.js" ></script>
+		<script type="text/javascript">
+			var courseId=<?=$course->id?>;
+			var itemCount = <?=$itemCount?>;
+			var dashboard='no';
+		</script>
+		
+	</head>
+	<body>
+
+		<div id="headerColor">
+			<div id="headerLogin">
+				<?php include("nav.inc.phtml"); ?>		
+			</div>
+		</div>
+		<div id="footerColor">
+		<div id="mainContent">
+			
+				<h2><?=$course->title?></h2>
+				<p class="header"><?=$course->description?></p>
+					
+			<p id="errorBox"><?=$errStr?></p>
+			<p id="errorBox2"><?=$errStr?></p>
+			<?php if($userMember) include("includes/postBox.inc.phtml"); elseif($user->id > 0) { ?>
+				<p>You're not enrolled in this course.  Would you like to <a href="/<?=$uri[0]?>/enroll">enroll</a>?</p>
+				
+			<?php } ?>
+			
+			<p><a href="#" onclick="reOrder('recent')">Most Recent</a> - 
+				<a href="#" onclick="reOrder('popular')">Most Popular</a>
+			</p>
+			
+			<?php include("includes/listItems.inc.phtml"); ?>
+			
+			<span id="moreLess">
+			<?php if($itemCount > 10) { ?>
+				<a onclick="showMore()">Show more</a>
+			<?php }?>
+			</span>
+					
+		</div>
+			<div id="copyright">
+			&copy; 2010 <a href="http://www.sneffel.com">Sneffel</a>
+			</div>		
+		</div>
+		
+		
+		<iframe id="helper" class="ajaxHelper"  onload="onHelperLoad();" src="">
+		</iframe>	
+
+		<iframe id="formHelper" class="ajaxHelper" name="uploadItem" onload="onUploadItemLoad();">
+		</iframe>		
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<div id="copyright">
+&copy; 2010 <a href="http://www.sneffel.com">Sneffel</a>  Developed by <a href="http://mebassett.gegn.net">Matthew Eric Bassett</a> Email him at <a href="mailto:matthew@sneffel.com">matthew@sneffel.com</a> or follow him on twitter <a href="http://www.twitter.com/mebassett">@mebassett</a>
+</div>	
+
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script>
+      FB.init({appId: '<?= facebookAPIID ?>', status: true, cookie: true, xfbml: true});
+  FB.Event.subscribe('auth.sessionChange', function(response) {
+    if (response.session) {
+     window.location = "/login";
+    } else {
+     window.location = "/logout";
+    }
+  });
+<?php if($controllerPageMap[$controller][0] == 'logout.php') {?>
+	FB.logout();
+<?php } ?>
+
+
+    </script>
+

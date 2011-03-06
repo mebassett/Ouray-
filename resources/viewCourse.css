@@ -1,0 +1,17 @@
+
+div.courseItem
+{
+	background-color: #DBAE7D;
+	padding:3px;
+	margin-top:10px; margin-bottom:10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+div.courseItem span
+{
+	font-size: 0.7em;
+}
+div.courseItem p 
+{
+	margin:5px;
+}
